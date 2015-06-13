@@ -1,0 +1,29 @@
+{
+  "name": "FunPaste",
+  "version": "0.0.0",
+  "authors": [
+    "nigh7ynigh7 <psxworld101@gmail.com>"
+  ],
+  "description": "Pastebin clone with node",
+  "main": "main.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "paste",
+    "fun",
+    "clone",
+    "pastebin",
+    "copy"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "dependencies": {
+    "angular": "~1.4.0",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4",
+    "angular-route": "~1.4.0",
+    "angular-resource": "~1.4.0",
+    "normalize": "~1.0.4"
+  }
+}

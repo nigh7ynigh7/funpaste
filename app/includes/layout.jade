@@ -1,0 +1,30 @@
+doctype html
+html(ng-app="")
+    head
+        title= pageTitle
+        include assets_css
+    body
+        //navbar
+        header
+            nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(role="navigation")
+                .container
+                    .navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#topMenu')
+                            span.sr-only Toggle Navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href="index.html") FunPaste
+                    #topMenu.collapse.navbar-collapse
+                        ul.nav.navbar-nav
+                            li
+                                a(href="new") Criar
+                        ul.nav.navbar-nav.navbar-right
+                            li
+                                a(href="login") Entrar
+            .dupeblock
+        //end navbar
+    
+        block content
+                            
+        include scripts
