@@ -36,6 +36,7 @@ var configObj = {
 };
 
 var config = configObj[env];
+console.log(config);
 
 function compile(str, path){
     return stylus(str).set('filename', path);
