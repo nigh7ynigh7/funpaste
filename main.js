@@ -7,9 +7,14 @@ var express = require('express'),
     logger = require('morgan');
     bodyParser = require('body-parser');
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
+
+
+
+
+
 
 //CONFIG
 
@@ -21,12 +26,12 @@ var configObj = {
     development : {
         db : "",
         rootPath: rootPath,
-        port: process.env.Port || 2194
+        port: process.env.PORT || 2194
     },
     production : {
         db : "",
         rootPath: rootPath,
-        port: process.env.Port || 80
+        port: process.env.PORT || 80
     }
 };
 
