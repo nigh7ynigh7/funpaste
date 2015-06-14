@@ -1,9 +1,9 @@
 doctype html
-html(ng-app="")
+html
     head
         title= pageTitle
         include assets_css
-    body
+    body(ng-app="app")
         //navbar
         header
             nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(role="navigation")
@@ -18,10 +18,9 @@ html(ng-app="")
                     #topMenu.collapse.navbar-collapse
                         ul.nav.navbar-nav
                             li
-                                a(href="new") Criar
-                        ul.nav.navbar-nav.navbar-right
-                            li
-                                a(href="login") Entrar
+                                a(href="/new") Criar
+                            li 
+                                a(href="/recent") Pastes Mais Recentes
             .dupeblock
         //end navbar
     
