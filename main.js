@@ -7,14 +7,9 @@ var express = require('express'),
     logger = require('morgan');
     bodyParser = require('body-parser');
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 
 var app = express();
-
-
-
-
-
 
 //CONFIG
 
