@@ -22,18 +22,20 @@ var path = require('path');
 var rootPath = path.normalize(__dirname);
 
 //config object
-var config = {
-    // development : {
+var configObj = {
+    development : {
         db : "",
         rootPath: rootPath,
         port: process.env.Port || 2194
-    // },
-    // production : {
-    //     db : "",
-    //     rootPath: rootPath,
-    //     port: process.env.Port || 80
-    // }
+    },
+    production : {
+        db : "",
+        rootPath: rootPath,
+        port: process.env.Port || 80
+    }
 };
+
+var config = configObj[env];
 
 function compile(str, path){
     return stylus(str).set('filename', path);
