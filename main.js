@@ -12,10 +12,6 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var app = express();
 
 
-
-
-
-
 //CONFIG
 
 var path = require('path');

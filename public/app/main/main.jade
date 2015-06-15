@@ -7,7 +7,7 @@
                 .panel-body
                     .form(role="form")
                         .form-group
-                            textarea#postArea.form-control(rows="10",ng-model="main.content")
+                            textarea#postArea.form-control(rows="10",ng-model="main.content", placeholder="")
                         .form-group
                             .dropdown
                                 button.btn.btn-default.dropdown-toggle(type="button", id="linguagens", data-toggle="dropdown", aria-expanded="true") Tipo de linguagem
@@ -21,8 +21,8 @@
                                     li.disabled(role="presentation")
                                         a(role="menuitem", tabindex="-1" href="#") Sem marcação de texto.
                         .form-group
-                            input.form-control(type="number", max="1440", min="5", ng-model="main.uptime")
+                            input.form-control(type="number", max="1440", min="5", ng-model="main.upTime")
+                            p.help-block
+                                em Tempo de duração até que o post seja deletado.
                         .form-group
-                            input.form-control(type="submit", name="input", value="Postar", ng-click="main.paste(main.content,main.lang,main.uptime)")
-                        .form-group
-                            | {{main.content + main.lang + main.uptime + main.upTime}}
+                            input.btn.btn-primary.form-control(type="submit", name="input", value="Postar", ng-click="main.paste(main.content,main.lang,main.upTime)")

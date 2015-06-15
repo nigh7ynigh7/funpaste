@@ -1,7 +1,7 @@
 app.controller('mvMainController', ['$http',function($http){
     this.lang = 'normal';
     this.content = '';
-    this.timeUp = 5;
+    this.upTime = 5;
 
     this.paste = function(content, language, time){
         $http.post('/create', {
@@ -17,6 +17,6 @@ app.controller('mvMainController', ['$http',function($http){
                     console.log("it's not in.");
                 }
             }
-        )
+        );
     };
 }]);
