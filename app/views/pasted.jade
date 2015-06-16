@@ -1,0 +1,22 @@
+extends ../includes/layout
+
+block content
+    .container.full(ng-controller="mvPastedController")
+        .row.full
+            .col-lg-12.col-sm-12.col-md-12.col-xs-12.full
+                .panel.panel-primary.centerMe
+                    .panel-heading 
+                        h4.panel-title Paste
+                    .panel-body
+                        #display.code(ng-class="posted.language", ng-style="normalStyle")!= pasteContent
+                        
+                        hr
+                        
+                        .col-lg-6.col-md-6.col-sm-6.col-xs-6
+                            a(ng-href="{{siteURL + paste._id}}") {{siteURL + paste._id}} 
+                        
+                        .col-lg-6.col-md-6.col-sm-6.col-xs-6.visibleMe {{paste.removalDate | date:'yyyy-MMM-dd hh:mm:ss a'}}
+                        
+                        script.
+                            var pasteId = "#{pasteId}";
+                            var siteURL = "#{siteURL}"

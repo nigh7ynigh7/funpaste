@@ -6,6 +6,7 @@ var express = require('express'),
     jade = require('jade'),
     logger = require('morgan');
     bodyParser = require('body-parser');
+    mongoose = require('mongoose');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -16,18 +17,21 @@ var app = express();
 
 var path = require('path');
 var rootPath = path.normalize(__dirname);
+var conString = require('./app/config/connectionString');
 
 //config object
 var configObj = {
     development : {
-        db : "",
+        db : conString[0],
         rootPath: rootPath,
-        port: process.env.PORT || 2194
+        port: process.env.PORT || 2194,
+        siteUrl: "http://localhost:2194/"
     },
     production : {
-        db : "",
+        db : conString[1],
         rootPath: rootPath,
-        port: process.env.PORT || 80
+        port: process.env.PORT || 80,
+        siteUrl:"http://funpaste.herokuapp.com/"
     }
 };
 
@@ -49,7 +53,101 @@ app.use(stylus.middleware({
 app.use(express.static(config.rootPath + '/public'));
 
 
+//databases
 
+mongoose.connect(config.db);
+
+var database = mongoose.connection;
+database.on('error', console.error.bind(console, 'error on connection'));
+database.on('open', function(callback){
+    console.log("We're in the base.");
+});
+
+var pasteSchema = mongoose.Schema({
+    content: String,
+    upTime: Number,
+    removalDate: Number,
+    language: String,
+    postDate: Date
+});
+
+var Paste = mongoose.model('Paste', pasteSchema);
+
+var savePaste = function(paste, callback){
+
+    var dateLimitPrimitive = paste.postDate.getTime() + paste.upTime * 1000;
+
+    console.log(paste.postDate.getTime());
+    console.log(new Date().getTime());
+    console.log(dateLimitPrimitive);
+
+    var saveMe = new Paste({
+        content: paste.content,
+        upTime: paste.upTime,
+        language: paste.language,
+        postDate: paste.postDate,
+        removalDate: dateLimitPrimitive
+    });
+
+    saveMe.save(function(err,item){
+        if(err) {
+            console.error(err);
+            callback(err);
+        }
+        else {
+            callback(null, item);
+        }
+    });
+};
+
+var getPaste = function(pasteId, callback){
+    Paste.findById(pasteId, function(err, findMe){
+        if(err){
+            console.error(err);
+            callback(err);
+        }
+        else {
+            callback(null, findMe);
+        }
+    });
+};
+
+var timedKill = function(callback){
+    var now = new Date();
+    Paste.find()
+        .where('removalDate')
+            .lt(now.getTime())
+        .exec(function(err,docs){
+            if (err) {
+                callback(true, err);
+            }
+            else {
+                var remove = function(err, removed){
+                    if (err){
+                        console.log(err);
+                        return;
+                    }
+                    console.log(removed);
+                };
+                for(var i=0;i < docs.length;i++){
+                    Paste.remove({_id: docs[i]._id}, remove);
+                }
+                callback(false, 'Old entries removed');
+            }
+        }
+    );
+};
+
+setInterval(function(){
+    console.log('killing time has initiated');
+    timedKill(function(hasError, message){
+        if (hasError) {
+            console.error(message);
+        }else {
+            console.log(message);
+        }
+    });
+}, 60000);
 
 //routes
 
@@ -59,7 +157,6 @@ app.get('/partials/*', function(req,res){
 
 app.post('/create', function(req,res){
     postContent = {
-        pasteid: 1,
         content: req.body.content,
         upTime: req.body.upTime,
         language: req.body.language,
@@ -100,20 +197,60 @@ app.post('/create', function(req,res){
     else {
         postContent.postDate = new Date();
 
-        console.log(postContent);
         //save paste to db and return a page withcurrent paste.
 
-        res.send({success:true, paste:postContent});
+        var savedPaste = savePaste(postContent, function(err, result){
+            if (err) {
+                res.send({ success : false });
+            }
+            else {
+                console.log(result);
+                res.send({success:true,
+                    paste:result,
+                    siteURL:config.siteUrl});
+            }
+        });
+
     }
-});
-
-app.get('/:id', function(req,res){
-
 });
 
 app.get('/index.html', function(req,res){
     res.render('index', {
         pageTitle:'PasteBin'
+    });
+});
+
+app.get('/paste/:id', function(req,res){
+    getPaste(req.params.id, function(err, result){
+        if(err || result === null)
+        {
+            res.send({success:false});
+        }
+        else {
+            res.send(
+                {
+                    success:true,
+                    paste:result
+                }
+            );
+        }
+    });
+});
+app.get('/:id', function(req,res){
+    getPaste(req.params.id, function(err, result){
+        if(err || result === null)
+        {
+            res.redirect('/index.html');
+        }
+        else {
+            res.render('pasted',
+                {
+                    pageTitle:'Paste ' + result._id,
+                    pasteId : req.params.id,
+                    siteURL : config.siteUrl
+                }
+            );
+        }
     });
 });
 

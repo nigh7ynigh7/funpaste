@@ -6,5 +6,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         templateUrl:'/partials/main/main',
         controller:'mvMainController',
         controllerAs: 'main'
+    }).when('/index.html', {
+        templateUrl:'/partials/main/main',
+        controller:'mvMainController',
+        controllerAs: 'main'
     });
 }]);
+
+// attribute data

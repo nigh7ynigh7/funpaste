@@ -5,7 +5,9 @@ app.controller('mvMainController', ['$http','$scope',function($http, $scope){
 
     $scope.showPaste = false;
 
-    $scope.pasted = {};
+    $scope.pasted = undefined;
+
+    $scope.removalDate = 0;
 
     this.paste = function(content, language, time){
         $http.post('/create', {
@@ -20,6 +22,11 @@ app.controller('mvMainController', ['$http','$scope',function($http, $scope){
                     $scope.showPaste = true;
 
                     console.log($scope.pasted);
+
+                    $scope.siteURL = persisted.data.siteURL;
+
+                    $scope.removalDate =new Date($scope.pasted.removalDate);
+
 
                     var block = document.getElementById('display');
                     block.innerHTML = $scope.pasted.content.replace(/ /g, '&nbsp;').replace(/(?:\r\n|\r|\n)/g, '<br />');
@@ -41,5 +48,13 @@ app.controller('mvMainController', ['$http','$scope',function($http, $scope){
                 }
             }
         );
+    };
+
+
+    this.forceGo = function(){
+        if ($scope.siteURL && $scope.pasted) {
+            window.location = $scope.siteURL + $scope.pasted._id;
+            window.location.reload();
+        }
     };
 }]);

@@ -8,6 +8,7 @@
                     #display.code(ng-class="posted.language", ng-style="normalStyle")
                     hr
                     .col-lg-6.col-md-6.col-sm-6.col-xs-6
-                        a(ng-href="'http://funpaste.herokuapp.com/' + pasted.id") {{'http://funpaste.herokuapp.com/' + pasted.id}} 
+                        a(ng-href="{{siteURL + pasted._id}}", ng-click="main.forceGo()") {{siteURL + pasted._id}} 
                     
-                    .col-lg-6.col-md-6.col-sm-6.col-xs-6.visibleMe {{pasted.postDate | date:'yyyy-MMM-dd hh:mm:ss a'}}
+                    .col-lg-6.col-md-6.col-sm-6.col-xs-6.visibleMe {{removalDate | date:'yyyy-MMM-dd hh:mm:ss a'}}
+                
