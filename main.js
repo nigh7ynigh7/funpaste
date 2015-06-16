@@ -75,7 +75,7 @@ var Paste = mongoose.model('Paste', pasteSchema);
 
 var savePaste = function(paste, callback){
 
-    var dateLimitPrimitive = paste.postDate.getTime() + paste.upTime * 1000;
+    var dateLimitPrimitive = paste.postDate.getTime() + (paste.upTime * 60 * 1000);
 
     console.log(paste.postDate.getTime());
     console.log(new Date().getTime());
