@@ -71,15 +71,13 @@ app.post('/create', function(req,res){
     validatePostLang = function(lang){
         if (lang === 'normal' ||
             lang === 'c' ||
-            lang === 'c#' ||
+            lang === 'cs' ||
+            lang === 'cpp' ||
             lang === 'java' ||
             lang === 'javascript' ||
             lang === 'json' ||
             lang === 'ruby' ||
-            lang === 'ruby-rails' ||
-            lang === 'c++' ||
             lang === 'vb' ||
-            lang === 'F#' ||
             lang === 'html' ||
             lang === 'css' ||
             lang === 'stylus' ||
@@ -87,7 +85,7 @@ app.post('/create', function(req,res){
             lang === 'python' ||
             lang === 'sql' ||
             lang === 'md' ||
-            lang === 'assembly'
+            lang === 'x86asm'
             )
         {
             return true;

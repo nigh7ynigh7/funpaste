@@ -10,7 +10,7 @@
                             textarea#postArea.form-control(rows="10",ng-model="main.content", placeholder="")
                         .form-group
                             .dropdown
-                                button.btn.btn-default.dropdown-toggle(type="button", id="linguagens", data-toggle="dropdown", aria-expanded="true") Tipo de linguagem
+                                button.btn.btn-default.dropdown-toggle(type="button", id="linguagens", data-toggle="dropdown", aria-expanded="true") Tipo de linguagem | {{main.lang}}
                                     span.caret
                                 ul.dropdown-menu(role="menu", aria-labelledby="linguagens")
                                     li.dropdown-header(role="presentation") Normal
@@ -18,8 +18,37 @@
                                         a(role="menuitem", tabindex="-1", href="#", ng-click="main.lang = 'normal'") Texto Normal
                                     li.divider(role="presentation")
                                     li.dropdown-header(role="presentation") Codigo
-                                    li.disabled(role="presentation")
-                                        a(role="menuitem", tabindex="-1" href="#") Sem marcação de texto.
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'c'") C
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'cs'") C#
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'java'") Java
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'javascript'") Javascript
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'python'") Python
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'ruby'") Ruby
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'sql'") SQL
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'vb'") Visual Basic
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'x86asm'") x86 Assembly
+                                    li.divider(role="presentation")
+                                    li.dropdown-header(role="presentation") Markup
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'css'") CSS
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'html'") HTML
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'md'") Markdown
+                                    li.divider(role="presentation")
+                                    li.dropdown-header(role="presentation") Outros
+                                    li(role="presentation")
+                                        a(role="menuitem", tabindex="-1" href="#", ng-click="main.lang = 'json'") JSON
+                                    
                         .form-group
                             input.form-control(type="number", max="1440", min="5", ng-model="main.upTime")
                             p.help-block
