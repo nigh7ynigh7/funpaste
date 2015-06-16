@@ -23,6 +23,14 @@ app.controller('mvMainController', ['$http','$scope',function($http, $scope){
 
                     var block = document.getElementById('display');
                     block.innerHTML = $scope.pasted.content.replace(/ /g, '&nbsp;').replace(/(?:\r\n|\r|\n)/g, '<br />');
+                    $scope.normalStyle = {};
+                    if($scope.pasted.language === 'normal'){
+                        $scope.normalStyle = {
+                            'padding-left' : '7px',
+                            'padding-top' : '7px'
+                        };
+                        return;
+                    }
                     hljs.configure({useBR: true});
                     hljs.highlightBlock(block);
                 }
