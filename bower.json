@@ -24,6 +24,7 @@
     "bootstrap": "~3.3.4",
     "angular-route": "~1.4.0",
     "angular-resource": "~1.4.0",
-    "normalize": "~1.0.4"
+    "normalize": "~1.0.4",
+    "highlightjs": "~8.5.0"
   }
 }

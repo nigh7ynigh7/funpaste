@@ -59,6 +59,7 @@ app.get('/partials/*', function(req,res){
 
 app.post('/create', function(req,res){
     postContent = {
+        pasteid: 1,
         content: req.body.content,
         upTime: req.body.upTime,
         language: req.body.language,
@@ -94,15 +95,9 @@ app.post('/create', function(req,res){
             return false;
         }
     };
-    console.log(validatePostLang);
 
     if(postContent.content === '' || postContent.upTime < 5 || !validatePostLang(postContent.language)){
-        console.log(postContent);
-        console.log(postContent.content === '' );
-        console.log(postContent.upTime < 5);
-        console.log(!validatePostLang(postContent.lang));
-        console.error('failed');
-        res.send({success:false});
+        res.send({ success : false });
     }
     else {
         postContent.postDate = new Date();
@@ -110,28 +105,25 @@ app.post('/create', function(req,res){
         console.log(postContent);
         //save paste to db and return a page withcurrent paste.
 
-        res.send({success:true});
+        res.send({success:true, paste:postContent});
     }
-});
-
-app.get('/paste', function(req,res){
-
 });
 
 app.get('/:id', function(req,res){
 
 });
 
-app.get('*', function(req, res){
+app.get('/index.html', function(req,res){
     res.render('index', {
-        pageTitle:'Index'
+        pageTitle:'PasteBin'
     });
 });
 
-// busisness, i guess
-
-
-
+app.get('*', function(req, res){
+    res.render('index', {
+        pageTitle:'PasteBin'
+    });
+});
 
 //networking
 

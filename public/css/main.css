@@ -26,3 +26,13 @@ body {
 .dropdown-menu {
   width: 100%;
 }
+.visibleMe {
+  color: #000;
+  text-align: right;
+}
+.code {
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 3px;
+  height: 300px;
+  overflow: auto;
+}

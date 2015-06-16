@@ -1,0 +1,13 @@
+.container.full
+    .row.full
+        .col-lg-12.col-sm-12.col-md-12.col-xs-12.full
+            .panel.panel-primary.centerMe
+                .panel-heading 
+                    h4.panel-title Paste
+                .panel-body
+                    #display.code.javascript
+                    hr
+                    .col-lg-6.col-md-6.col-sm-6.col-xs-6
+                        a(ng-href="'http://funpaste.herokuapp.com/' + pasted.id") {{'http://funpaste.herokuapp.com/' + pasted.id}} 
+                    
+                    .col-lg-6.col-md-6.col-sm-6.col-xs-6.visibleMe {{pasted.postDate | date:'yyyy-MMM-dd hh:mm:ss a'}}

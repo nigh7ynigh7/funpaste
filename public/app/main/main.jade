@@ -1,28 +1,6 @@
-.container.full
-    .row.full
-        .col-12-md.col-12-lg.col-12-sm.col-12-xs.full.full2
-            .panel.panel-primary.centerMe
-                .panel-heading
-                    h3.panel-title Cole Aqui!
-                .panel-body
-                    .form(role="form")
-                        .form-group
-                            textarea#postArea.form-control(rows="10",ng-model="main.content", placeholder="")
-                        .form-group
-                            .dropdown
-                                button.btn.btn-default.dropdown-toggle(type="button", id="linguagens", data-toggle="dropdown", aria-expanded="true") Tipo de linguagem
-                                    span.caret
-                                ul.dropdown-menu(role="menu", aria-labelledby="linguagens")
-                                    li.dropdown-header(role="presentation") Normal
-                                    li(role="presentation")
-                                        a(role="menuitem", tabindex="-1", href="#", ng-click="main.lang = 'normal'") Texto Normal
-                                    li.divider(role="presentation")
-                                    li.dropdown-header(role="presentation") Codigo
-                                    li.disabled(role="presentation")
-                                        a(role="menuitem", tabindex="-1" href="#") Sem marcação de texto.
-                        .form-group
-                            input.form-control(type="number", max="1440", min="5", ng-model="main.upTime")
-                            p.help-block
-                                em Tempo de duração até que o post seja deletado.
-                        .form-group
-                            input.btn.btn-primary.form-control(type="submit", name="input", value="Postar", ng-click="main.paste(main.content,main.lang,main.upTime)")
+div.full(ng-hide="showPaste")
+    div.full(ng-include="'partials/main/paste'")
+div.full(ng-show="showPaste")
+    div.full(ng-include="'partials/main/pasted'")
+h1 {{main.showPaste}}
+h1 {{main.pasted}}

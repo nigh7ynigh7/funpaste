@@ -1,6 +1,6 @@
 postAndBackgroundColor = rgb(0, 32, 116)
 textColorForBackgroundAndPost = rgb(224, 240, 255)
-
+codeText = "Courier New", Courier, monospace
 
 
 html,body,.full
@@ -24,12 +24,23 @@ body
 
 #postArea
     resize: vertical
-    font-family: "Courier New", Courier, monospace
+    font-family: codeText
     background-color:postAndBackgroundColor
     color:textColorForBackgroundAndPost
     max-height:444px
 
 #linguagens
     width:100%
+
 .dropdown-menu
     width:100%
+
+.visibleMe
+    color black
+    text-align right
+
+.code
+    font-family codeText
+    border-radius 3px
+    height 300px
+    overflow auto
