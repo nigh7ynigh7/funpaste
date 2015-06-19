@@ -8,3 +8,4 @@ deploy:
   app: funpaste
   on:
     repo: nigh7ynigh7/funpaste
+ 
