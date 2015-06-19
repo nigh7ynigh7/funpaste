@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "0.12"
+deploy:
+  provider: heroku
+  api_key:
+    secure: c0c56c84-5ad9-48d2-9cfb-3d7d738cfff9
+  app: funpaste
+  on:
+    repo: nigh7ynigh7/funpaste
