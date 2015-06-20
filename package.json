@@ -7,17 +7,14 @@
     "type": "git",
     "url": "https://github.com/nigh7ynigh7/funpaste.git"
   },
+  "scripts": {
+    "start": "node main.js",
+    "test": "mocha app/tests/test.js"
+  },
   "keywords": [
     "Paste",
     "Copy"
   ],
-  "scripts": {
-    "start": "node main.js",
-    "test": "mocha ./app/tests/test.js"
-  },
-  "engines": {
-    "node": "0.12.2"
-  },
   "author": "Ba",
   "license": "MIT",
   "dependencies": {
@@ -25,7 +22,6 @@
     "body-parser": "^1.12.4",
     "coveralls": "^2.11.2",
     "express": "^4.12.4",
-    "istanbul": "^0.3.15",
     "jade": "^1.11.0",
     "mocha": "^2.2.5",
     "mongoose": "^4.0.5",
