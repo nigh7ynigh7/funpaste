@@ -33,7 +33,7 @@ module.exports.getPaste = function(id) {
                 if (err) {
                     return reject(err);
                 }
-                return rejecy(null);
+                return reject(null);
             } else {
                 return fulfill(result);
             }
