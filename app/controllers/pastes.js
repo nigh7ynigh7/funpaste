@@ -30,7 +30,10 @@ module.exports.getPaste = function(id) {
     return new Promise(function(fulfill, reject) {
         pastesModel.getPaste(id, function(err, result) {
             if (err || result === null) {
-                return reject(err || result);
+                if (err) {
+                    return reject(err);
+                }
+                return rejecy(null);
             } else {
                 return fulfill(result);
             }
