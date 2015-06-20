@@ -1,10 +1,12 @@
-#README: FUNPASTE
+# README: FUNPASTE
 
-[![Build Status](https://travis-ci.org/nigh7ynigh7/funpaste.svg?branch=master)](https://travis-ci.org/nigh7ynigh7/funpaste)
+[![Build Status](https://travis-ci.org/nigh7ynigh7/funpaste.svg?branch=master)](https://travis-ci.org/nigh7ynigh7/funpaste) [![Coverage Status](https://coveralls.io/repos/nigh7ynigh7/funpaste/badge.svg?branch=master)](https://coveralls.io/r/nigh7ynigh7/funpaste?branch=master)
 
 
-Arquivo readme desse projeto.
+## Deployed
 
-Finalmente.
+http://funpaste.herokuapp.com/
 
-Agora só falta o coveralls.....
+## About
+
+Isso aqui é um clone do PasteBin.......
