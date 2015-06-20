@@ -3,10 +3,6 @@ node_js:
     - "0.12"
 install:
     - npm install
-script:
-    - NODE_ENV=development YOURPACKAGE_COVERAGE=1
-after_success:
-    - coveralls
 deploy:
     provider: heroku
     api_key:
