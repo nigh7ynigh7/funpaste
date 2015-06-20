@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "start": "node main.js",
-    "test": "test": "npm run test-node",
-    "test-node": "mocha -R spec ./test/test.js"
+    "test": "mocha ./app/tests/test.js"
   },
   "engines": {
     "node": "0.12.2"

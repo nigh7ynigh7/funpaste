@@ -2,7 +2,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 var assert = require('assert');
-var pastesModel = require('../../models/pastes');
+var pastesModel = require('../models/pastes');
 var mongoose = require('mongoose');
 
 
