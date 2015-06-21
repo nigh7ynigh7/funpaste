@@ -1,5 +1,4 @@
 var pastesModel = require('../../models/pastes');
-var mongoose = require('mongoose');
 var should = require('should');
 
 module.exports = function() {
