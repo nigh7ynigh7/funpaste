@@ -31,7 +31,7 @@ module.exports = function() {
 
                     var expected = true;
 
-                    result.should.be.true;
+                    (result).should.be.true;
 
                     done();
                 });
@@ -44,7 +44,7 @@ module.exports = function() {
 
                 var result = pastesModel.validatePostLang(param);
 
-                result.should.be.false;
+                (result).should.be.false;
 
                 done();
             });
@@ -74,11 +74,30 @@ module.exports = function() {
                     }else {
                         result = rsp;
                     }
-                    result.should.not.be.a.String;
-                    result.should.be.ok;
-                    result.should.be.an.Object;
-                    result.should.have.property('_id');
-                    result.should.have.property('removalDate');
+                    (result).should.not.be.a.String;
+                    (result).should.be.ok;
+                    (result).should.be.an.Object;
+                    (result).should.have.property('_id');
+                    (result).should.have.property('removalDate');
+                    done();
+                });
+            });
+
+            it('should return an error when i paste something with the wrong parameters', function(done){
+                var wrongPaste = paste;
+                wrongPaste.upTime = undefined;
+                wrongPaste.content = undefined;
+                var result;
+                pastesModel.savePaste(wrongPaste, function(err, rsp){
+                    if (err) {
+                        result = err;
+                    }else {
+                        result = rsp;
+                    }
+                    (err).should.be.ok;
+                    should(rsp).not.be.ok;
+                    (result).should.be.ok;
+                    (result).should.be.a.String;
                     done();
                 });
             });
@@ -94,8 +113,8 @@ module.exports = function() {
                     }else {
                         result = err;
                     }
-                    result.should.not.be.ok;
-                    result.should.not.be.a.String;
+                    (result).should.not.be.ok;
+                    (result).should.not.be.a.String;
                     done();
                 });
             });
@@ -110,21 +129,36 @@ module.exports = function() {
 
                 pastesModel.savePaste(paste, function(err, result){
                     if (err) {
-                        should.fail('Something went down', err);
+                        (should).fail('Something went down', err);
                         done();
                     }else {
                         pastesModel.getPaste(result._id , function(err, found){
                             if (err) {
-                                should.fail('Something went down', err);
+                                (should).fail('Something went down', err);
                                 done();
                             }else {
-                                found.should.be.ok;
-                                found.should.be.Object;
-                                found.should.have.property('_id');
-                                found.should.have.property('removalDate');
+                                (found).should.be.ok;
+                                (found).should.be.Object;
+                                (found).should.have.property('_id');
+                                (found).should.have.property('removalDate');
                                 done();
                             }
                         });
+                    }
+                });
+            });
+        });
+
+        describe('Removing pastes', function(){
+            it('should delete some pastes within one minute of posting', function(done){
+                    pastesModel.timedKill(function(isError, msg){
+                    if (isError) {
+                        (should).fail('Something went down', msg);
+                        done();
+                    }else {
+                        (msg).should.be.ok;
+                        (msg).should.be.String;
+                        done();
                     }
                 });
             });
