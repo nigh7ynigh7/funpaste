@@ -20,6 +20,6 @@ module.exports = configObj = {
         db : conString[2],
         rootPath: rootPath,
         port: process.env.PORT || 80,
-        siteUrl:"http://funpaste.herokuapp.com/"
+        siteUrl:"http://localhost:2194/"
     }
 };
