@@ -148,7 +148,7 @@ module.exports = function() {
             });
         });
 
-        describe('Removing pastes', function(){
+        describe.skip('Removing pastes', function(){
             it('should delete some pastes within one minute of posting', function(done){
                     pastesModel.timedKill(function(isError, msg){
                     if (isError) {
